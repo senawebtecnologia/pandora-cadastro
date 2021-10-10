@@ -68,9 +68,9 @@ class AdminController extends Controller
      * @param  \App\Models\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function edit(Contact $contact)
+    public function edit(Contact $user)
     {
-        //
+        return view('index.edit', compact('user'));
     }
 
     /**
@@ -80,7 +80,7 @@ class AdminController extends Controller
      * @param  \App\Models\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Contact $contact)
+    public function update(Request $request, Contact $user)
     {
         $user->nome = $request->nome;
         $user->data_nascimento = $request->data_nascimento;
@@ -89,6 +89,10 @@ class AdminController extends Controller
         $user->complemento = $request->complemento;
         $user->cidade = $request->cidade;
         $user->estado = $request->estado;
+
+        if ($user->save()) {
+            return redirect()->route('admin.index');
+        }
     }
 
     /**
@@ -99,6 +103,8 @@ class AdminController extends Controller
      */
     public function destroy(Contact $contact)
     {
-        //
+        if ($contact->delete()) {
+            return redirect()->route('admin.index');
+        }
     }
 }
