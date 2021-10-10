@@ -17,4 +17,22 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('admin/dashboard', 'Admin\AdminController@index');
+Route::group(['prefix' => 'admin/', 'namespace' => 'Admin'], function(){
+
+    /**
+     * Rotas para Dashboard
+     */
+
+    Route::get('dashboard', 'AdminController@index')->name('admin.user');
+
+    /** 
+     * Rotas para Usuario
+     */
+
+    Route::get('dashboard', 'AdminController@index')->name('admin.user');
+    Route::get('dashboard/create', 'AdminController@create')->name('admin.user.create');
+    Route::post('dashboard/create', 'AdminController@store')->name('admin.user.store');
+    Route::get('dashboard/edit/{user}', 'AdminController@edit')->name('admin.user.edit');
+    Route::post('dashboard/update/{user}', 'AdminController@update')->name('admin.user.update');
+    Route::post('dashboard/delete/{user}', 'AdminController@destroy')->name('admin.user.delete');
+});
