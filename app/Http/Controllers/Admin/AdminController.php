@@ -38,7 +38,8 @@ class AdminController extends Controller
     public function store(Request $request)
     {
         $user = new Contact();
-        $user->nome = $request->nome;
+        $user->primeiro_nome = $request->primeiro_nome;
+        $user->segundo_nome = $request->segundo_nome;
         $user->data_nascimento = $request->data_nascimento;
         $user->endereco = $request->endereco;
         $user->telefone = $request->telefone;

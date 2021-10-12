@@ -12,13 +12,17 @@
                 <form method="POST" action="{{ route('admin.user.store') }}">
                     <div class="row">
                         <div class="form-group col-md-6">
-                            <label for="userName">Nome</label>
-                            <input type="text" class="form-control" id="userName">
+                            <label for="userFirstName">Primeiro Nome</label>
+                            <input type="text" class="form-control" id="userFirstName" name="primeiro_nome">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="userSecondName">Segundo Nome</label>
+                            <input type="text" class="form-control" id="userSecondName" name="segundo_nome">
                         </div>
                         <div class="form-group col-md-6">
                             <label>Data de Nascimento</label>
                             <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                                <input type="text" class="form-control datetimepicker-input" data-target="#reservationdate"/>
+                                <input type="text" class="form-control datetimepicker-input" name="data_nascimento" data-target="#reservationdate"/>
                                 <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
                                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                 </div>
@@ -26,23 +30,23 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label for="userAddress">Endereço</label>
-                            <input type="text" class="form-control" id="userAddress">
+                            <input type="text" class="form-control" id="userAddress" name="endereço">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="userNumber">Telefone</label>
-                            <input type="number" class="form-control" id="userNumber">
+                            <input type="number" class="form-control" id="userNumber" name="telefone">
                         </div>
-                        {{-- <div class="form-group col-md-6">
+                        <div class="form-group col-md-6">
                             <label for="userComplent">Complemento</label>
-                            <input type="text" class="form-control" id="userComplent">
-                        </div> --}}
+                            <input type="text" class="form-control" id="userComplent" name="complemento">
+                        </div>
                         <div class="form-group col-md-6">
                             <label for="userCity">Cidade</label>
-                            <input type="text" class="form-control" id="userCity">
+                            <input type="text" class="form-control" id="userCity" name="cidade">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="userCity">Estado</label>
-                            <input type="text" class="form-control" id="userCity">
+                            <input type="text" class="form-control" id="userCity" name="estado">
                         </div>
                     </div>
                     <div class="form-group">
