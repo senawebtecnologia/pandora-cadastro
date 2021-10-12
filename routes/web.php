@@ -17,22 +17,25 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['prefix' => 'admin/', 'namespace' => 'Admin'], function(){
-
+Route::group(['prefix' => 'admin/'], function(){
+    
     /**
      * Rotas para Dashboard
      */
-
-    Route::get('dashboard', 'AdminController@index')->name('admin.user');
+    Route::group(['namespace' => 'Dashboard'], function(){
+        Route::get('dashboard', 'DashboardController@index')->name('admin.dashboard.index');
+    });
 
     /** 
      * Rotas para Usuario
      */
-
-    Route::get('dashboard', 'AdminController@index')->name('admin.user');
-    Route::get('dashboard/create', 'AdminController@create')->name('admin.user.create');
-    Route::post('dashboard/create', 'AdminController@store')->name('admin.user.store');
-    Route::get('dashboard/edit/{user}', 'AdminController@edit')->name('admin.user.edit');
-    Route::post('dashboard/update/{user}', 'AdminController@update')->name('admin.user.update');
-    Route::post('dashboard/delete/{user}', 'AdminController@destroy')->name('admin.user.delete');
+    Route::group(['namespace' => 'Admin'], function(){
+        Route::get('dashboard/user', 'AdminController@index')->name('admin.user.index');
+        Route::get('dashboard/user/create', 'AdminController@create')->name('admin.user.create');
+        Route::post('dashboard/user/create', 'AdminController@store')->name('admin.user.store');
+        Route::get('dashboard/user/edit/{user}', 'AdminController@edit')->name('admin.user.edit');
+        Route::post('dashboard/user/update/{user}', 'AdminController@update')->name('admin.user.update');
+        Route::post('dashboard/user/delete/{user}', 'AdminController@destroy')->name('admin.user.delete');
+    });
+    
 });

@@ -61,7 +61,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{ route('admin.dashboard.index') }}" class="nav-link {{ Route::currentRouteName() == 'admin.dashboard.index' ? 'active' : '' }}">
               <i class="nav-icon fas fa-home"></i>
               <p>Home</p>
             </a>
@@ -77,13 +77,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../layout/top-nav.html" class="nav-link">
+                <a href="{{ route('admin.user.index') }}" class="nav-link {{ Route::currentRouteName() == 'admin.user.index' ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Ver</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../layout/top-nav-sidebar.html" class="nav-link">
+                <a href="{{ route('admin.user.create') }}" class="nav-link {{ Route::currentRouteName() == 'admin.user.create' ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Cadastrar</p>
                 </a>
@@ -118,14 +118,7 @@
     <!-- Main content -->
     <section class="content">
 
-      <!-- Default box -->
-      <div class="card">
-        <div class="card-body">
-            @yield('content')
-        </div>
-        <!-- /.card-body -->
-      </div>
-      <!-- /.card -->
+      @yield('content')
 
     </section>
     <!-- /.content -->
