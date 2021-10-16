@@ -10,6 +10,7 @@
             </div>
             <div class="card-body">
                 <form method="POST" action="{{ route('admin.user.store') }}">
+                    @csrf
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label for="userFirstName">Primeiro Nome</label>
@@ -30,7 +31,7 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label for="userAddress">Endereço</label>
-                            <input type="text" class="form-control" id="userAddress" name="endereço">
+                            <input type="text" class="form-control" id="userAddress" name="endereco">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="userNumber">Telefone</label>

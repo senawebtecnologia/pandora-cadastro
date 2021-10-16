@@ -48,7 +48,7 @@ class AdminController extends Controller
         $user->estado = $request->estado;
 
         if ($user->save()) {
-            return redirect()->route('admin.index');
+            return redirect()->route('admin.user.index');
         }
     }
 
@@ -60,7 +60,7 @@ class AdminController extends Controller
      */
     public function show(Contact $user)
     {
-        return view('index.show', compact('user'));
+        return view('admin.show', compact('user'));
     }
 
     /**
@@ -71,7 +71,7 @@ class AdminController extends Controller
      */
     public function edit(Contact $user)
     {
-        return view('index.edit', compact('user'));
+        return view('admin.edit', compact('user'));
     }
 
     /**
@@ -83,7 +83,8 @@ class AdminController extends Controller
      */
     public function update(Request $request, Contact $user)
     {
-        $user->nome = $request->nome;
+        $user->primeiro_nome = $request->primeiro_nome;
+        $user->segundo_nome = $request->segundo_nome;
         $user->data_nascimento = $request->data_nascimento;
         $user->endereco = $request->endereco;
         $user->telefone = $request->telefone;
@@ -92,7 +93,7 @@ class AdminController extends Controller
         $user->estado = $request->estado;
 
         if ($user->save()) {
-            return redirect()->route('admin.index');
+            return redirect()->route('admin.user.index');
         }
     }
 
@@ -102,10 +103,10 @@ class AdminController extends Controller
      * @param  \App\Models\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Contact $contact)
+    public function destroy(Contact $user)
     {
-        if ($contact->delete()) {
-            return redirect()->route('admin.index');
+        if ($user->delete()) {
+            return redirect()->route('admin.user.index');
         }
     }
 }

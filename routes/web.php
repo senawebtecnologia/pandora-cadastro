@@ -30,12 +30,15 @@ Route::group(['prefix' => 'admin/'], function(){
      * Rotas para Usuario
      */
     Route::group(['namespace' => 'Admin'], function(){
+
         Route::get('dashboard/user', 'AdminController@index')->name('admin.user.index');
+        Route::get('dashboard/user/{user}', 'AdminController@show')->name('admin.user.show');
         Route::get('dashboard/user/create', 'AdminController@create')->name('admin.user.create');
         Route::post('dashboard/user/create', 'AdminController@store')->name('admin.user.store');
         Route::get('dashboard/user/edit/{user}', 'AdminController@edit')->name('admin.user.edit');
         Route::post('dashboard/user/update/{user}', 'AdminController@update')->name('admin.user.update');
-        Route::post('dashboard/user/delete/{user}', 'AdminController@destroy')->name('admin.user.delete');
+        Route::delete('dashboard/user/delete/{user}', 'AdminController@destroy')->name('admin.user.delete');
+        
     });
     
 });

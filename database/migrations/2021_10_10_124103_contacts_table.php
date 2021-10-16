@@ -17,7 +17,7 @@ class ContactsTable extends Migration
             $table->bigIncrements('id');
             $table->string('primeiro_nome', 100);
             $table->string('segundo_nome', 100);
-            $table->date('data_nascimento');
+            $table->string('data_nascimento')->nullable();
             $table->string('endereco', 255);
             $table->string('telefone', 20);
             $table->string('complemento', 60);
