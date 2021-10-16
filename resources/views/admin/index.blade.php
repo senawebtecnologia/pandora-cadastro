@@ -27,14 +27,16 @@
                             <td>{{ $user->primeiro_nome. ' '. $user->segundo_nome }}</td>
                             <td>{{ $user->telefone }}</td>
                             <td>{{ $user->cidade }}</td>
-                            <td class="row justify-content-center"> 
-                                <a href="{{ route('admin.user.show', ['user' => $user->id ]) }}" class="btn btn-primary mr-2"><i class="fa fa-eye"></i></a>
-                                <a href="{{ route('admin.user.edit', ['user' => $user->id ]) }}" class="btn btn-info mr-2"><i class="fa fa-edit"></i></a>
-                                <form action="{{ route('admin.user.delete', ['user' => $user->id ]) }}" method="post">
-                                    @csrf
-                                    @method('delete')
-                                    <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
-                                </form>
+                            <td class="text-center py-2">
+                                <div class="btn-group">
+                                    <a href="{{ route('admin.user.show', ['user' => $user->id ]) }}" class="btn btn-primary"><i class="fas fa-eye"></i></a>
+                                    <a href="{{ route('admin.user.edit', ['user' => $user->id ]) }}" class="btn btn-info mr-1"><i class="fas fa-edit"></i></a>
+                                    <form action="{{ route('admin.user.delete', ['user' => $user->id ]) }}" method="post" class="row">
+                                        @csrf
+                                        @method('delete')
+                                        <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                                    </form>
+                                </div>
                             </td>
                         </tr>
                     @endforeach
