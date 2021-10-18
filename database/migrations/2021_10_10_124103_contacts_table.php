@@ -19,7 +19,7 @@ class ContactsTable extends Migration
             $table->string('segundo_nome', 100);
             $table->string('data_nascimento')->nullable();
             $table->string('endereco', 255);
-            $table->string('telefone', 20);
+            $table->integer('telefone');
             $table->string('complemento', 60);
             $table->string('cidade', 255);
             $table->char('estado', 2);

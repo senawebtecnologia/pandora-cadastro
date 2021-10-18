@@ -9,6 +9,15 @@
                 <h6 class="header-title">Criar Um Usuario</h6>
             </div>
             <div class="card-body">
+                
+                @if ($errors->all())    
+                    <div class="alert alert-danger">
+                        @foreach ($errors->all() as $error)
+                            <p>{{ $error }}</p>
+                        @endforeach
+                    </div>
+                @endif
+
                 <form method="POST" action="{{ route('admin.user.store') }}">
                     @csrf
                     <div class="row">
@@ -48,6 +57,14 @@
                         <div class="form-group col-md-6">
                             <label for="userCity">Estado</label>
                             <input type="text" class="form-control" id="userCity" name="estado">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="userPassword">Senha</label>
+                            <input type="password" class="form-control" id="userPassword" name="password">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="userConfirmPassword">Confirmar Senha</label>
+                            <input type="password" class="form-control" id="userConfirmPassword" name="password_confirmation">
                         </div>
                     </div>
                     <div class="form-group">

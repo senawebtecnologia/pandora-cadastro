@@ -4,7 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Contact;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class AdminController extends Controller
 {
@@ -37,6 +41,23 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'primeiro_nome' => ['required', 'string', 'max:100'],
+            'segundo_nome' => ['required', 'string', 'max:100'],
+            'data_nascimento' => ['required', 'date'],
+            'endereco' => ['required', 'string', 'max:255'],
+            'telefone' => ['required', 'integer'],
+            'complemento' => ['required', 'string', 'max:60'],
+            'cidade' => ['required', 'string', 'max:255'],
+            'estado' => ['required', 'string', 'max:2'],
+            'password' => ['required', 'confirmed'],
+        ]);
+        
+        if ($validator->fails()) {
+
+            return redirect()->back()->withErrors($validator);
+        }
+
         $user = new Contact();
         $user->primeiro_nome = $request->primeiro_nome;
         $user->segundo_nome = $request->segundo_nome;
@@ -47,7 +68,14 @@ class AdminController extends Controller
         $user->cidade = $request->cidade;
         $user->estado = $request->estado;
 
-        if ($user->save()) {
+        $credencialsUser = new User();
+        $credencialsUser->nome = $user->primeiro_nome . ' '. $user->segundo_nome;
+        $credencialsUser->usuario = Str::lower($user->primeiro_nome) . Str::lower($user->segundo_nome);
+        $credencialsUser->senha = Hash::make($request->password);
+
+
+        if ($user->save() && $credencialsUser->save()) {
+
             return redirect()->route('admin.user.index');
         }
     }
@@ -83,6 +111,23 @@ class AdminController extends Controller
      */
     public function update(Request $request, Contact $user)
     {
+        $validator = Validator::make($request->all(), [
+            'primeiro_nome' => ['required', 'string', 'max:100'],
+            'segundo_nome' => ['required', 'string', 'max:100'],
+            'data_nascimento' => ['required', 'date'],
+            'endereco' => ['required', 'string', 'max:255'],
+            'telefone' => ['required', 'integer'],
+            'complemento' => ['required', 'string', 'max:60'],
+            'cidade' => ['required', 'string', 'max:255'],
+            'estado' => ['required', 'string', 'max:2'],
+            'password' => ['required', 'confirmed'],
+        ]);
+        
+        if ($validator->fails()) {
+
+            return redirect()->back()->withErrors($validator);
+        }
+        
         $user->primeiro_nome = $request->primeiro_nome;
         $user->segundo_nome = $request->segundo_nome;
         $user->data_nascimento = $request->data_nascimento;
@@ -92,7 +137,14 @@ class AdminController extends Controller
         $user->cidade = $request->cidade;
         $user->estado = $request->estado;
 
-        if ($user->save()) {
+        $credencialsUser = new User();
+        $credencialsUser->nome = $user->primeiro_nome . ' '. $user->segundo_nome;
+        $credencialsUser->usuario = Str::lower($user->primeiro_nome) . Str::lower($user->segundo_nome);
+        $credencialsUser->senha = Hash::make($request->password);
+
+
+        if ($user->save() && $credencialsUser->save()) {
+
             return redirect()->route('admin.user.index');
         }
     }
