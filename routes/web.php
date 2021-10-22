@@ -17,9 +17,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['prefix' => 'auth/', 'namespace' => 'Auth'] , function(){
+Route::group(['namespace' => 'Auth'] , function(){
     Route::get('login', 'AuthController@pageLogin')->name('auth.pageLogin');
     Route::post('login', 'AuthController@login')->name('auth.login');
+    Route::delete('logout', 'AuthController@logout')->name('auth.logout');        
+
 
 });
 
@@ -44,7 +46,7 @@ Route::group(['prefix' => 'admin/', 'middleware' => 'auth'], function(){
         Route::get('dashboard/user/edit/{user}', 'AdminController@edit')->name('admin.user.edit');
         Route::post('dashboard/user/update/{user}', 'AdminController@update')->name('admin.user.update');
         Route::delete('dashboard/user/delete/{user}', 'AdminController@destroy')->name('admin.user.delete');
-        
+
     });
     
 });

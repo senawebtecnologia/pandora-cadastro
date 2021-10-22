@@ -43,10 +43,15 @@
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a href="{{ route('auth.logout') }}" class="nav-link" onclick="event.preventDefault();
+        document.getElementById('logout-form').submit();">
           <i class="fas fa-power-off"></i>
         </a>
       </li>
+      <form action="{{ route('auth.logout') }}" method="POST" id="logout-form" style="display: none;">
+        @csrf
+        @method('delete')
+      </form>
     </ul>
   </nav>
   <!-- /.navbar -->
