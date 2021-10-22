@@ -16,19 +16,17 @@ class VerificarUsuario
      */
     public function handle($request, Closure $next)
     {
-
-        if (Auth::user()) {
-
-            if (Auth::user()->nivel == 0) {
-
-                return redirect()->route('admin.dashboard');
-
-            }else if (Auth::user()->nivel == 1) {
-                
-                return redirect()->route('user.dashboard');
-
-            }
+        
+        if (Auth::check() && Auth::user()->access === 0) {
+            return $next($request);
         }
-        return $next($request);
+        
+        if(Auth::check() && Auth::user()->access === 1){
+            return redirect()->route('auth.pageLogin');
+        }
+
+        return redirect()->back();
+        
     }
+    
 }

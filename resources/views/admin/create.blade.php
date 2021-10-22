@@ -54,6 +54,14 @@
                             <input type="text" class="form-control" id="userCity" name="estado">
                         </div>
                         <div class="form-group col-md-6">
+                            <label for="userName">Nome de Usuario</label>
+                            <input type="text" class="form-control" id="userName" name="nome_usuario">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="userEmail">E-mail</label>
+                            <input type="email" class="form-control" id="userEmail" name="email">
+                        </div>
+                        <div class="form-group col-md-6">
                             <label for="userPassword">Senha</label>
                             <input type="password" class="form-control" id="userPassword" name="password">
                         </div>

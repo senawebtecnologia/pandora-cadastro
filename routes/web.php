@@ -17,7 +17,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['prefix' => 'admin/'], function(){
+Route::group(['prefix' => 'auth/', 'namespace' => 'Auth'] , function(){
+    Route::get('login', 'AuthController@pageLogin')->name('auth.pageLogin');
+    Route::post('login', 'AuthController@login')->name('auth.login');
+
+});
+
+Route::group(['prefix' => 'admin/', 'middleware' => 'auth'], function(){
     
     /**
      * Rotas para Dashboard

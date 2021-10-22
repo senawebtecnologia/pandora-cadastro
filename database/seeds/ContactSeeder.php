@@ -15,7 +15,7 @@ class ContactSeeder extends Seeder
         DB::table('contacts')->insert([
             'primeiro_nome' => 'Arão',
             'segundo_nome' => 'Domingos',
-            'data_nascimento' => now(),
+            'data_nascimento' => date('d/m/Y'),
             'endereco' => 'Cazenga, Luanda',
             'cidade' => 'Luanda',
             'complemento' => 'bairro petrangol',
