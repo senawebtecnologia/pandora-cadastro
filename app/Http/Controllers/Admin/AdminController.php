@@ -51,6 +51,8 @@ class AdminController extends Controller
             'cidade' => ['required', 'string', 'max:255'],
             'estado' => ['required', 'string', 'max:2'],
             'password' => ['required', 'confirmed'],
+            'email' => ['required', 'email', 'unique:users'],
+
         ]);
         
         if ($validator->fails()) {
@@ -69,9 +71,10 @@ class AdminController extends Controller
         $user->estado = $request->estado;
 
         $credencialsUser = new User();
-        $credencialsUser->nome = $user->primeiro_nome . ' '. $user->segundo_nome;
-        $credencialsUser->usuario = Str::lower($user->primeiro_nome) . Str::lower($user->segundo_nome);
-        $credencialsUser->senha = Hash::make($request->password);
+        $credencialsUser->name = $user->primeiro_nome . ' '. $user->segundo_nome;
+        $credencialsUser->user_name = Str::lower($user->primeiro_nome) . Str::lower($user->segundo_nome);
+        $credencialsUser->email = $request->email;
+        $credencialsUser->password = Hash::make($request->password);
 
 
         if ($user->save() && $credencialsUser->save()) {

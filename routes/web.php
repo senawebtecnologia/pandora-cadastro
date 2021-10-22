@@ -20,7 +20,7 @@ Route::get('/', function () {
 Route::group(['namespace' => 'Auth'] , function(){
     Route::get('login', 'AuthController@pageLogin')->name('auth.pageLogin');
     Route::post('login', 'AuthController@login')->name('auth.login');
-    Route::delete('logout', 'AuthController@logout')->name('auth.logout');        
+    Route::delete('logout', 'AuthController@Logout')->name('auth.logout');        
 
 
 });
