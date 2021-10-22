@@ -31,12 +31,7 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label>Data de Nascimento</label>
-                            <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                                <input type="text" class="form-control datetimepicker-input" name="data_nascimento" data-target="#reservationdate"/>
-                                <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
-                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                                </div>
-                            </div>
+                            <input type="date" class="form-control" name="data_nascimento"/>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="userAddress">Endereço</label>
