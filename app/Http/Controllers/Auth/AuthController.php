@@ -18,7 +18,7 @@ class AuthController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'email' => ['required', 'email'],
-            'password' => ['required', 'password'],
+            'password' => ['required'],
         ]);
 
         if ($validator->fails()) {
@@ -32,7 +32,7 @@ class AuthController extends Controller
             return redirect()->route('admin.dashboard.index')->with('success', 'Seja Bem Vindo');
 
         }else{
-            return redirect()->back()->withErrors(['messageError' => 'Por favor insira os dados correctos']);
+            return redirect()->back()->withErrors('Insire os dados correctos');
 
         }
     }

@@ -14,11 +14,13 @@
   
         <form action="{{ route('auth.login') }}" method="post">
             @csrf
-            @foreach ($errors->all() as $error)
-                <div class="alert alert-danger">
+            @if ($errors->all())    
+              <div class="alert alert-danger">
+                  @foreach ($errors->all() as $error)
                     <p>{{ $error }}</p>
-                </div>
-            @endforeach
+                  @endforeach
+              </div>
+            @endif
           <div class="input-group mb-3">
             <input type="email" class="form-control" name="email" placeholder="Nome de Usuario">
             <div class="input-group-append">
@@ -60,4 +62,3 @@
     </div>
   </div>
 @endsection
-

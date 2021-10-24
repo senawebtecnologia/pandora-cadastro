@@ -85,6 +85,7 @@
       $(this).bootstrapSwitch('state', $(this).prop('checked'));
     })
 
+    
   })
   // BS-Stepper Init
   document.addEventListener('DOMContentLoaded', function () {
